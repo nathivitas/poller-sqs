@@ -8,8 +8,7 @@
     "start": "node poller.js"
   },
   "dependencies": {
-    "@aws-sdk/client-sqs": "^3.537.0",
-    "mysql2": "^3.9.4",
-    "dotenv": "^16.3.1"
+    "mysql2": "^3.9.6",
+    "@aws-sdk/client-sqs": "^3.518.0"
   }
 }
