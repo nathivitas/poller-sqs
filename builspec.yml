@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 20
+    commands:
+      - echo "Installing dependencies..."
+      - npm install
+  build:
+    commands:
+      - echo "Build phase skipped — nothing to compile"
+  post_build:
+    commands:
+      - echo "Logging into ECR..."
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 165274966895.dkr.ecr.us-east-1.amazonaws.com
+      - echo "Building Docker image..."
+      - docker build -t yp-sqs-producer .
+      - docker tag yp-sqs-producer:latest 165274966895.dkr.ecr.us-east-1.amazonaws.com/yp-sqs-producer:latest
+      - echo "Pushing to ECR..."
+      - docker push 165274966895.dkr.ecr.us-east-1.amazonaws.com/yp-sqs-producer:latest
+
+artifacts:
+  files:
+    - '**/*'
+

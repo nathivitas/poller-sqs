@@ -1,0 +1,15 @@
+{
+  "name": "yp-sqs-producer",
+  "version": "1.0.0",
+  "description": "Database poller that sends mc_id records to an SQS queue",
+  "main": "poller.js",
+  "type": "module",
+  "scripts": {
+    "start": "node poller.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-sqs": "^3.537.0",
+    "mysql2": "^3.9.4",
+    "dotenv": "^16.3.1"
+  }
+}
