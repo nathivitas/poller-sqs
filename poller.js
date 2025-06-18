@@ -1,5 +1,5 @@
-const mysql = require('mysql2/promise');
-const { SQSClient, SendMessageCommand } = require('@aws-sdk/client-sqs');
+import mysql from 'mysql2/promise';
+import { SQSClient, SendMessageCommand } from '@aws-sdk/client-sqs';
 
 const {
   DB_HOST,
@@ -45,7 +45,7 @@ async function runPoller() {
 }
 
 runPoller();
-// ⏲ Exit after 5 minutes (300000 ms)
+
 setTimeout(() => {
   console.log("🛑 Time limit reached (5 minutes). Exiting gracefully...");
   process.exit(0);
